@@ -1,0 +1,17 @@
+{
+  "name": "math",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "congruence_system": "pnpm tsx ./congruence_system.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "consola": "^3.2.3",
+    "mathjs": "^14.0.0",
+    "tsx": "^4.19.2"
+  }
+}
