@@ -73,7 +73,9 @@ class SetRelations {
   inverse() {
     return new SetRelations(
       this.set,
-      new Set([...this.relations].map(v => [v[1], v[0]]))
+      new Set(
+        [...this.relations].map(v => [v[1], v[0]]).toSorted() as Relation[]
+      )
     )
   }
 
@@ -90,7 +92,61 @@ class SetRelations {
       })
       v = w
     }
-    return new SetRelations(this.set, new Set(v))
+    return new SetRelations(this.set, new Set(v.toSorted()))
+  }
+
+  transitiveClosure(): SetRelations {
+    if (this.isTransitive) return this
+
+    const closure: Relation[] = []
+    const tableEntries = Object.entries(this.table)
+    tableEntries.forEach(v =>
+      Object.entries(v[1])
+        .filter(w => w[1])
+        .forEach(w =>
+          tableEntries.forEach(u => {
+            if (!u[1][v[0]] || u[1][w[0]]) return
+            if (closure.some(x => x[0] === u[0] && x[1] === w[0])) return
+            closure.push([u[0], w[0]])
+          })
+        )
+    )
+
+    return new SetRelations(
+      this.set,
+      new Set([...this.relations, ...closure].toSorted())
+    ).transitiveClosure()
+  }
+
+  reflexiveClosure() {
+    return new SetRelations(
+      this.set,
+      new Set(
+        [
+          ...this.relations,
+          ...Object.entries(this.table).reduce((acc: Relation[], v) => {
+            if (v[1][v[0]]) return acc
+            return [...acc, [v[0], v[0]] as Relation]
+          }, []),
+        ].toSorted()
+      )
+    )
+  }
+
+  symmetricClosure() {
+    const closure: Relation[] = []
+    Object.entries(this.table).every(v =>
+      Object.entries(v[1])
+        .filter(w => w[1])
+        .forEach(w => {
+          if (this.table[w[0]][v[0]] === w[1]) return
+          closure.push([w[0], v[0]])
+        })
+    )
+    return new SetRelations(
+      this.set,
+      new Set([...this.relations, ...closure].toSorted())
+    )
   }
 }
 
