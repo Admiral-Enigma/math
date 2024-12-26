@@ -58,9 +58,7 @@ class SetRelations {
     this.isUniversal = tableRows.every(x => Object.values(x).every(y => y))
     this.isIdentity =
       this.isReflexive &&
-      tableRows.every(
-        x => Object.values(x).filter(y => y === true).length === 1
-      )
+      tableRows.every(x => Object.values(x).filter(y => y).length === 1)
     this.isPartialOrdering =
       this.isReflexive && this.isAntiSymmetric && this.isTransitive
     this.isTotalOrdering =
@@ -77,6 +75,22 @@ class SetRelations {
       this.set,
       new Set([...this.relations].map(v => [v[1], v[0]]))
     )
+  }
+
+  pow(k: number) {
+    let v = [...this.relations]
+    for (let i = 0; i < k - 1; i++) {
+      let w: Relation[] = []
+      v.forEach(([start, curr]) => {
+        Object.entries(this.table[curr])
+          .filter(u => u[1])
+          .forEach(u => {
+            w.push([start, u[0]])
+          })
+      })
+      v = w
+    }
+    return new SetRelations(this.set, new Set(v))
   }
 }
 
