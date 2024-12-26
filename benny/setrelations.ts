@@ -13,6 +13,7 @@ class SetRelations {
   isUniversal: boolean
   isIdentity: boolean
   isPartialOrdering: boolean
+  isTotalOrdering: boolean
 
   constructor(set: Set<string>, relations: Set<Relation>) {
     this.set = set
@@ -44,7 +45,7 @@ class SetRelations {
     )
     this.isAntiSymmetric = tableEntries.every(v =>
       Object.entries(v[1]).every(
-        w => v[0] === w[0] || this.table[w[0]][v[0]] !== w[1]
+        w => !(w[1] && this.table[w[0]][v[0]]) || v[0] === w[0]
       )
     )
     this.isTransitive = tableEntries.every(v =>
@@ -62,6 +63,13 @@ class SetRelations {
       )
     this.isPartialOrdering =
       this.isReflexive && this.isAntiSymmetric && this.isTransitive
+    this.isTotalOrdering =
+      this.isPartialOrdering &&
+      tableEntries.every(v =>
+        Object.entries(v[1]).every(
+          w => v[0] === w[0] || this.table[w[0]][v[0]] !== w[1]
+        )
+      )
   }
 
   inverse() {
