@@ -66,10 +66,3 @@ const boolMult = (a: Matrix, b: Matrix) => {
   }
   return new Matrix(v)
 }
-
-const at = new Matrix([
-  [1, 2, 3],
-  [1, 2, 3],
-  [1, 2, 3],
-  [1, 2, 3],
-]).transpose()
