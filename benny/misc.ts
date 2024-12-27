@@ -11,3 +11,9 @@ const invmod = (b: number, a: number) => {
   }
   return [d[d.length - 1], s[s.length - 1], t[t.length - 1]]
 }
+
+export const factorial = (n: number) => {
+  if (n < 0) throw Error('Factorial is not defined for negative numbers')
+  else if (n === 0) return 1
+  return n * factorial(n - 1)
+}
