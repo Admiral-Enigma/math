@@ -1,20 +1,19 @@
-class CongruenceSystem {
-  system: string[]
-  vName: string
+const mod = (n: number, m: number) => ((n % m) + m) % m
 
-  constructor(system: string[], vName: string = 'x') {
+class CongruenceSystem {
+  system: [number, number][]
+
+  constructor(system: [number, number][]) {
     this.system = system
-    this.vName = vName
   }
 
   isSolution(n: number) {
-    return this.system.every(x => eval(x.replaceAll(this.vName, n.toString())))
+    return this.system.every(v => mod(n, v[1]) === mod(v[0], v[1]))
   }
 
   hasSolutionInRange(n: number, m: number) {
     for (let i = n; i < m + 1; i++) {
-      if (this.system.every(x => eval(x.replaceAll(this.vName, i.toString()))))
-        return true
+      if (this.system.every(v => mod(i, v[1]) === mod(v[0], v[1]))) return true
     }
     return false
   }
@@ -22,8 +21,7 @@ class CongruenceSystem {
   solutionsInRange(n: number, m: number) {
     const v: number[] = []
     for (let i = n; i < m + 1; i++) {
-      if (this.system.every(x => eval(x.replaceAll(this.vName, i.toString()))))
-        v.push(i)
+      if (this.system.every(v => mod(i, v[1]) === mod(v[0], v[1]))) v.push(i)
     }
     return v
   }
