@@ -19,13 +19,17 @@ class CongruenceSystem {
     return false
   }
 
-  countSolutionsInRange(n: number, m: number) {
+  solutionsInRange(n: number, m: number) {
     const v: number[] = []
     for (let i = n; i < m + 1; i++) {
       if (this.system.every(x => eval(x.replaceAll(this.vName, i.toString()))))
         v.push(i)
     }
-    return v.length
+    return v
+  }
+
+  countSolutionsInRange(n: number, m: number) {
+    return this.solutionsInRange(n, m).length
   }
 }
 
