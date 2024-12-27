@@ -17,3 +17,13 @@ export const factorial = (n: number) => {
   else if (n === 0) return 1
   return n * factorial(n - 1)
 }
+
+export const sum = (
+  i: number,
+  n: number,
+  f: (i: number, n: number) => number
+) => {
+  let m = 0
+  for (; i < n + 1; i++) m += f(i, n)
+  return m
+}
