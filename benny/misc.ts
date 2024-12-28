@@ -12,7 +12,12 @@ export const invmod = (b: number, a: number) => {
     s.push(s[i - 2] - q * s[i - 1])
     t.push(t[i - 2] - q * t[i - 1])
   }
-  return [d[d.length - 1], s[s.length - 1], t[t.length - 1]]
+
+  if (d[d.length - 2] !== 1) {
+    throw new Error(`${b} and ${a} are not coprime!`)
+  }
+
+  return mod(s[s.length - 1], a)
 }
 
 export const factorial = (n: number) => {
@@ -29,4 +34,9 @@ export const sum = (
   let m = 0
   for (; i < n + 1; i++) m += f(i, n)
   return m
+}
+
+export const gcd = (a: number, b: number) => {
+  if (b === 0) return a
+  return gcd(b, mod(a, b))
 }
