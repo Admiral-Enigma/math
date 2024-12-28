@@ -1,3 +1,6 @@
+// Fixes retarded JS mod
+export const mod = (n: number, m: number) => ((n % m) + m) % m
+
 export const invmod = (b: number, a: number) => {
   const d = [b, a]
   const s = [0, 1]

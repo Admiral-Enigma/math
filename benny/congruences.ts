@@ -1,5 +1,4 @@
-// Fixes retarded JS mod
-export const mod = (n: number, m: number) => ((n % m) + m) % m
+import { mod } from './misc.ts'
 
 export class CongruenceSystem {
   system: [number, number][]
