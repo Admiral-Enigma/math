@@ -135,7 +135,7 @@ export class SetRelations {
 
   symmetricClosure() {
     const closure: Relation[] = []
-    Object.entries(this.table).every(v =>
+    Object.entries(this.table).forEach(v =>
       Object.entries(v[1])
         .filter(w => w[1])
         .forEach(w => {
