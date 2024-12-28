@@ -1,4 +1,4 @@
-const invmod = (b: number, a: number) => {
+export const invmod = (b: number, a: number) => {
   const d = [b, a]
   const s = [0, 1]
   const t = [1, 0]

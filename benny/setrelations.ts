@@ -1,6 +1,6 @@
 type Relation = [string, string]
 
-class SetRelations {
+export class SetRelations {
   set: Set<string>
   relations: Set<Relation>
   table: Record<string, Record<string, boolean>>
@@ -150,4 +150,4 @@ class SetRelations {
   }
 }
 
-class SR extends SetRelations {}
+export class SR extends SetRelations {}

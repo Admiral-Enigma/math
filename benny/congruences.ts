@@ -1,6 +1,7 @@
-const mod = (n: number, m: number) => ((n % m) + m) % m
+// Fixes retarded JS mod
+export const mod = (n: number, m: number) => ((n % m) + m) % m
 
-class CongruenceSystem {
+export class CongruenceSystem {
   system: [number, number][]
 
   constructor(system: [number, number][]) {
@@ -31,4 +32,4 @@ class CongruenceSystem {
   }
 }
 
-class CS extends CongruenceSystem {}
+export class CS extends CongruenceSystem {}

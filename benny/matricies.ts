@@ -1,4 +1,4 @@
-class Matrix {
+export class Matrix {
   size: [number, number]
   matrix: number[][]
 
@@ -24,7 +24,7 @@ class Matrix {
   }
 }
 
-const mult = (a: Matrix, b: Matrix) => {
+export const mult = (a: Matrix, b: Matrix) => {
   if (a.size[1] !== b.size[0])
     throw Error(
       'The number of columns of the first matrix must be equal to the number of rows in the second'
@@ -44,7 +44,7 @@ const mult = (a: Matrix, b: Matrix) => {
   return new Matrix(v)
 }
 
-const boolMult = (a: Matrix, b: Matrix) => {
+export const boolMult = (a: Matrix, b: Matrix) => {
   if (a.size[1] !== b.size[0])
     throw Error(
       'The number of columns of the first matrix must be equal to the number of rows in the second'

@@ -1,4 +1,4 @@
-class LogicalEpxression {
+export class LogicalEpxression {
   exprStr: string
   truthTable: Record<string, boolean>[]
   isTautology: boolean
@@ -47,4 +47,4 @@ class LogicalEpxression {
   }
 }
 
-class LE extends LogicalEpxression {}
+export class LE extends LogicalEpxression {}
