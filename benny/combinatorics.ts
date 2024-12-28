@@ -21,3 +21,6 @@ export const equalLabeledGroups = (a: number, b: number) => {
   const n = a / b
   return factorial(a) / factorial(n) ** b
 }
+
+// ways to distribute k indistinguishable items among n distinguishable groups
+export const starsAndBars = (k: number, n: number) => C(k + n - 1, k)
