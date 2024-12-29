@@ -16,6 +16,13 @@ export class SetRelations {
   isTotalOrdering: boolean
 
   constructor(set: Set<string>, relations: Set<Relation>) {
+    // Prune duplicate relations
+    relations = new Set(
+      [...new Set([...relations].map(x => JSON.stringify(x)))].map(x =>
+        JSON.parse(x)
+      )
+    )
+
     this.set = set
     this.relations = relations
 
