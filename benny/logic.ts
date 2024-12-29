@@ -6,6 +6,9 @@ export class LogicalEpxression {
   isContingency: boolean
 
   constructor(exprStr: string, vars: string[]) {
+    // This is to avoid overlap in cases where expression is variable
+    exprStr = ' ' + exprStr
+
     const jsExprStr = exprStr
       .replaceAll('<=>', '==')
       .replaceAll('<=', '>=')
