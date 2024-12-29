@@ -40,3 +40,10 @@ export const gcd = (a: number, b: number) => {
   if (b === 0) return a
   return gcd(b, mod(a, b))
 }
+
+export const arePairwisePrime = (v: number[]) => {
+  for (let i = 0; i < v.length; i++)
+    for (let j = i + 1; j < v.length; j++)
+      if (gcd(v[i], v[j]) !== 1) return false
+  return true
+}
