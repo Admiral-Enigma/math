@@ -66,3 +66,13 @@ export const boolMult = (a: Matrix, b: Matrix) => {
   }
   return new Matrix(v)
 }
+
+export const scalarMult = (a: Matrix, k: number) =>
+  new Matrix(a.matrix.map(v => v.map(x => x * k)))
+
+export const add = (a: Matrix, b: Matrix) => {
+  if (a.size[0] !== b.size[0] || a.size[1] !== b.size[1])
+    throw Error('a and b must have same sizes')
+
+  return new Matrix(a.matrix.map((v, i) => v.map((x, j) => x + b.matrix[i][j])))
+}
