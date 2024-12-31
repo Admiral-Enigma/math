@@ -1,6 +1,6 @@
 // !!!!DISCLAIMER!!!!
 // USE THIS MODULE WITH CARE!
-// This is only ment for super basic testing...
+// This is only ment for basic testing...
 // Please use your brain before using this!
 
 // These sets should be enough for most exam cases
@@ -10,6 +10,7 @@
 // - Odd / Even
 const TEST_SETS = {
   Z: [-13, -10, -9, -7, -4, -3, -2, -1, 0, 1, 2, 3, 4, 7, 8, 9, 11, 13, 16],
+  'Z-{0}': [-13, -10, -9, -7, -4, -3, -2, -1, 1, 2, 3, 4, 7, 8, 9, 11, 13, 16],
   'Z+': [1, 2, 3, 4, 7, 8, 9, 11, 13, 16],
   'Z-': [-13, -10, -9, -7, -4, -3, -2, -1],
   N: [0, 1, 2, 3, 4, 7, 8, 9, 11, 13, 16],
