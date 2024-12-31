@@ -13,6 +13,7 @@ export class LogicalEpxression {
       .replaceAll('<=>', '==')
       .replaceAll('<=', '>=')
       .replaceAll('=>', '<=')
+      .replaceAll('-', '&& !') // For use in set logic
     const table: Record<string, boolean>[] = []
 
     for (let i = 0; i < 2 ** vars.length; i++) {

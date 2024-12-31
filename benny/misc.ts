@@ -41,6 +41,10 @@ export const gcd = (a: number, b: number) => {
   return gcd(b, mod(a, b))
 }
 
+export const lcm = (a: number, b: number): number => {
+  return Math.abs(a * b) / gcd(a, b)
+}
+
 export const arePairwisePrime = (v: number[]) => {
   for (let i = 0; i < v.length; i++)
     for (let j = i + 1; j < v.length; j++)
