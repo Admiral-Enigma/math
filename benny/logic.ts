@@ -5,7 +5,7 @@ export class LogicalEpxression {
   isContradiction: boolean
   isContingency: boolean
 
-  constructor(exprStr: string, vars: string[]) {
+  constructor(exprStr: string, _vars?: string[]) {
     // This is to avoid overlap in cases where expression is variable
     exprStr = ' ' + exprStr
 
@@ -14,6 +14,8 @@ export class LogicalEpxression {
       .replaceAll('<=', '>=')
       .replaceAll('=>', '<=')
       .replaceAll('-', '&& !') // For use in set logic
+
+    const vars = _vars || [...new Set(jsExprStr.match(/[a-z]/g))].toSorted()
     const table: Record<string, boolean>[] = []
 
     for (let i = 0; i < 2 ** vars.length; i++) {
