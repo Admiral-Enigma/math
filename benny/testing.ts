@@ -1,6 +1,6 @@
 // !!!!DISCLAIMER!!!!
 // USE THIS MODULE WITH CARE!
-// This is only ment for basic testing...
+// This is only meant for basic testing...
 // Please use your brain before using this!
 
 // These sets should be enough for most exam cases
