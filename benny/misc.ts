@@ -20,6 +20,8 @@ export const invmod = (b: number, a: number) => {
   return mod(s[s.length - 1], a)
 }
 
+export const divides = (a: number, b: number) => b % a === 0
+
 export const factorial = (n: number) => {
   if (n < 0) throw Error('Factorial is not defined for negative numbers')
   else if (n === 0) return 1
