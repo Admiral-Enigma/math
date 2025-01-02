@@ -33,11 +33,8 @@ export class LogicalEpxression {
 
     this.exprStr = exprStr
     this.truthTable = table
-    this.isTautology = table.reduce((acc, row) => acc && row[exprStr], true)
-    this.isContradiction = !table.reduce(
-      (acc, row) => acc || row[exprStr],
-      false
-    )
+    this.isTautology = table.every(v => v[exprStr])
+    this.isContradiction = !table.some(v => v[exprStr])
     this.isContingency = !this.isTautology && !this.isContradiction
   }
 
@@ -46,10 +43,8 @@ export class LogicalEpxression {
   }
 
   isEqualTo(expr: LogicalEpxression) {
-    return (
-      JSON.stringify(this.truthTable) ==
-      JSON.stringify(expr.truthTable).replaceAll(expr.exprStr, this.exprStr)
-    )
+    return new LogicalEpxression(`(${this.exprStr}) <=> (${expr.exprStr})`)
+      .isTautology
   }
 }
 
