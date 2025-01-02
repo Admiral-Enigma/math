@@ -15,7 +15,7 @@ export class LogicalEpxression {
       .replaceAll('=>', '<=')
       .replaceAll('-', '&& !') // For use in set logic
 
-    const vars = _vars || [...new Set(jsExprStr.match(/[a-z]/g))].toSorted()
+    const vars = _vars || [...new Set(jsExprStr.match(/[a-zA-Z]/g))].toSorted()
     const table: Record<string, boolean>[] = []
 
     for (let i = 0; i < 2 ** vars.length; i++) {
