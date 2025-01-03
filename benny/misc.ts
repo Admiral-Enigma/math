@@ -17,7 +17,7 @@ export const invmod = (b: number, a: number) => {
     throw new Error(`${b} and ${a} are not coprime!`)
   }
 
-  return mod(s[s.length - 1], a)
+  return mod(t[t.length - 2], a)
 }
 
 export const divides = (a: number, b: number) => b % a === 0
