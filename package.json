@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "congruence_system": "pnpm tsx ./congruence_system.ts",
-    "repl": "cd benny && deno repl --allow-read --eval-file=./logic.ts,./matricies.ts,./combinatorics.ts,./logic.ts,./congruences.ts,./setrelations.ts,./misc.ts,./testing.ts,../sequence.ts"
+    "repl": "cd benny && deno repl --allow-read --eval-file=./logic.ts,./matricies.ts,./combinatorics.ts,./logic.ts,./congruences.ts,./setrelations.ts,./misc.ts,./testing.ts,./proofs.ts,../sequence.ts"
   },
   "keywords": [],
   "author": "",
