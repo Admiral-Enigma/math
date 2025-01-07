@@ -32,3 +32,6 @@ export class CongruenceSystem {
 }
 
 export class CS extends CongruenceSystem {}
+
+export const congruence = (a: number, b: number, m: number) =>
+  mod(a, m) === mod(b, m)
